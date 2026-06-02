@@ -1,12 +1,12 @@
 # Rubiks_cube
-A program for terminal which lets a user play with a NxNxN Rubik's cube.
+A program for terminal which lets a user play with a `NxNxN` Rubik's cube.
 
 # Introduction
 
 Check [Rubik's cube](https://en.wikipedia.org/wiki/Rubik%27s_Cube) for an
 introduction to the puzzle if you're not familiar.
 
-Program works in terminal, it creates a N x N x N Rubik's cube in an arranged
+Program works in terminal, it creates a `NxNxN` Rubik's cube in an arranged
 state and follows user given instructions on turning the cube's layers, showing
 the cube's state if prompted.
 
@@ -19,8 +19,8 @@ check the compilation flags in the [Makefile](Makefile).
 # Specification
 
 ## Input
-By default N = 5, this can be changed to a different constant on compilation
-using the option -DN=value.
+By default `N = 5`, this can be changed to a different constant on compilation
+using the option `-DN=value`.
 
 Program's input is a sequence of instructions to turn layers and of printing
 current cube's state, the sequence ends with a dot. Characters after the dot are
@@ -45,7 +45,7 @@ A face is determined by a letter:
 
 If the part describing the number of layers is empty, it means the number of
 layers is 1. If not, it's a decimal number signifying a positive number of
-layers. This number cannot exceed constant N which defines the cube's size.
+layers. This number cannot exceed constant `N` which defines the cube's size.
 
 The part describing the rotation's angle is either empty, a single or a double
 quotation mark. Empty means 90 degrees rotation, a single is -90 degrees and a
@@ -57,8 +57,7 @@ clockwise.
 
 Input data follows the following grammar, with a starting symbol Data:
 
-TODO niejednoznaczna, liczby?
-
+`
 Data → Sequence Dot
 Sequence → ε | Instruction Sequence
 Instruction → Rotation | Print
@@ -79,6 +78,10 @@ SingleQuote → '
 DoubleQuote → "
 Endline → \n
 Dot → .
+`
+
+In case of wrong inputs the program exits with an error code of 1 and some error
+message.
 
 ## Output
 
@@ -99,34 +102,35 @@ We assume that an arranged cube has color:
 The position of the faces on the printout of the state of the cube is consistent
 with the scheme:
 
-  u
+`  u
 l|f|r|b
-  d
+  d`
+
 
 where u, l, f, r, b, d are, respectively, upper, left, frontal, right, back and
 down faces.
 
-For a constant N defining the size of the cube, printout of the cube's state
-consists of 3 x N + 1 rows:
+For a constant `N` defining the size of the cube, printout of the cube's state
+consists of `3 x N + 1` rows:
 - first row is empty
-- N following rows describe upper face
-- N rows after that describe left, frontal, right and back faces
-- last N rows describe the down face.
+- `N` following rows describe upper face
+- `N` rows after that describe left, frontal, right and back faces
+- last `N` rows describe the down face.
 
-Each description row of upper and down faces starts with N + 1 spaces, after
-which there are N digits describing the colors of that face's squares.
+Each description row of upper and down faces starts with `N + 1` spaces, after
+which there are `N` digits describing the colors of that face's squares.
 
 Description rows of left, frontal, right and back faces have, in order:
-- N digits describing colors of squares of the left face
+- `N` digits describing colors of squares of the left face
 - character |,
-- N digits describing colors of squares of the frontal face
+- `N` digits describing colors of squares of the frontal face
 - character |,
-- N digits describing colors of squares of the right face
+- `N` digits describing colors of squares of the right face
 - character |,
-- N digits describing colors of squares of the back face.
+- `N` digits describing colors of squares of the back face.
 
 On the printout of the state of the cube, the digits specifying the colors of
-the squares of each face occupy the area of size N x N.
+the squares of each face occupy the area of size `NxN`.
 
 For the left, front, right and back faces, the colors of the squares are
 described in the order that we would see after the rotation of the entire cube
@@ -137,10 +141,10 @@ cube by a multiple of the right angle on the left face - right face axis.
 
 # Examples
 
-In the folder [examples](examples) there are files .in with valid input examples
-and files .out with appropriate outputs for those respective inputs.
+In the folder [examples](examples) there are files `.in` with valid input
+examples and files `.out` with appropriate outputs for those respective inputs.
 
-Examples assume that N = 5.
+Examples assume that `N = 5`.
 
 # Compilation
 

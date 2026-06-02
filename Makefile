@@ -8,6 +8,9 @@ all: bin/cube
 bin/cube: cube.c bin
 	$(CC) -DN=5 $(CFLAGS) $< -o $@
 
+bin/test_executable: cube.c bin
+	$(CC) -DN=23 $(CFLAGS) $< -o $@
+
 bin:
 	mkdir -p bin
 
@@ -17,6 +20,3 @@ clean:
 
 test: bin/test_executable test.sh tests
 	./test.sh
-
-bin/test_executable: cube.c
-	$(CC) -DN=23 $(CFLAGS) $< -o $@
