@@ -57,7 +57,7 @@ clockwise.
 
 Input data follows the following grammar, with a starting symbol Data:
 
-`
+```
 Data → Sequence Dot
 Sequence → ε | Instruction Sequence
 Instruction → Rotation | Print
@@ -78,7 +78,7 @@ SingleQuote → '
 DoubleQuote → "
 Endline → \n
 Dot → .
-`
+```
 
 In case of wrong inputs the program exits with an error code of 1 and some error
 message.
@@ -102,9 +102,11 @@ We assume that an arranged cube has color:
 The position of the faces on the printout of the state of the cube is consistent
 with the scheme:
 
-`  u
+```
+  u
 l|f|r|b
-  d`
+  d
+```
 
 
 where u, l, f, r, b, d are, respectively, upper, left, frontal, right, back and
