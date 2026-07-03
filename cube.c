@@ -379,7 +379,7 @@ void output(int cube[][N][N]) {
 }
 
 /* Input */
-bool isValid(char ch) {
+bool isValid(int ch) {
   return isdigit(ch) || strchr(ALLOWED_CHARS, ch) != NULL;
 }
 
@@ -394,7 +394,7 @@ char getChar() {
       perror("getchar()");
       exit(EXIT_FAILURE);
     }
-  } else if (!isValid(res)) {
+  } else if (!isValid(ch)) {
     perror(
         "Invalid character, valid input is only new line, .ulfrbd\'\" and "
         "digits.");
