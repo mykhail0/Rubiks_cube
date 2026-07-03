@@ -389,7 +389,7 @@ char getChar() {
 
   if (ch == EOF) {
     if (feof(stdin)) {
-      ch = '.';
+      res = '.';
     } else if (ferror(stdin)) {
       perror("getchar()");
       exit(EXIT_FAILURE);
