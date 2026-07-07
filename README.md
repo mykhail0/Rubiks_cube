@@ -1,7 +1,8 @@
 # Rubiks_cube
+
 A program for terminal which lets a user play with a `NxNxN` Rubik's cube.
 
-# Introduction
+## Introduction
 
 Check [Rubik's cube](https://en.wikipedia.org/wiki/Rubik%27s_Cube) for an
 introduction to the puzzle if you're not familiar.
@@ -10,15 +11,18 @@ Program works in terminal, it creates a `NxNxN` Rubik's cube in an arranged
 state and follows user given instructions on turning the cube's layers, showing
 the cube's state if prompted.
 
-# Requirements
+## Requirements
 
 Project works for a Linux system with a working gcc compiler, to run tests you
-should have [valgrind](https://valgrind.org/). In case of encountering a problem
-check the compilation flags in the [Makefile](Makefile).
+should have [valgrind](https://valgrind.org/). A [Makefile](Makefile) with a
+default compilation command is supplied. It also has phony targets clean and
+test. If you want to change the `N` constant, set the appropriate option for the
+`cube` target's compilation.
 
-# Specification
+## Specification
 
-## Input
+### Input
+
 By default `N = 5`, this can be changed to a different constant on compilation
 using the option `-DN=value`.
 
@@ -57,7 +61,7 @@ clockwise.
 
 Input data follows the following grammar, with a starting symbol Data:
 
-```
+```text
 Data → Sequence Dot
 Sequence → ε | Instruction Sequence
 Instruction → Rotation | Print
@@ -83,7 +87,7 @@ Dot → .
 In case of wrong inputs the program exits with an error code of 1 and some error
 message.
 
-## Output
+### Output
 
 Program's output is the result of following instructions to print current states
 of the cube.
@@ -92,6 +96,7 @@ Cube's state is printed using characters of 0, 1, 2, 3, 4, 5 signifying possible
 colors of squares on cube's faces. Also space and '|' characters are used.
 
 We assume that an arranged cube has color:
+
 - 0 on the face u
 - 1 on the face l
 - 2 on the face f
@@ -102,18 +107,18 @@ We assume that an arranged cube has color:
 The position of the faces on the printout of the state of the cube is consistent
 with the scheme:
 
-```
+```text
   u
 l|f|r|b
   d
 ```
-
 
 where u, l, f, r, b, d are, respectively, upper, left, frontal, right, back and
 down faces.
 
 For a constant `N` defining the size of the cube, printout of the cube's state
 consists of `3 x N + 1` rows:
+
 - first row is empty
 - `N` following rows describe upper face
 - `N` rows after that describe left, frontal, right and back faces
@@ -123,6 +128,7 @@ Each description row of upper and down faces starts with `N + 1` spaces, after
 which there are `N` digits describing the colors of that face's squares.
 
 Description rows of left, frontal, right and back faces have, in order:
+
 - `N` digits describing colors of squares of the left face
 - character |,
 - `N` digits describing colors of squares of the frontal face
@@ -141,15 +147,9 @@ by a multiple of the right angle on the up face - down face axis.
 For the upper and down faces, the order is as we would see if we rotated the
 cube by a multiple of the right angle on the left face - right face axis.
 
-# Examples
+## Examples
 
 In the folder [examples](examples) there are files `.in` with valid input
 examples and files `.out` with appropriate outputs for those respective inputs.
 
 Examples assume that `N = 5`.
-
-# Compilation
-
-A [Makefile](Makefile) with a default compilation command is supplied. It also
-has phony targets clean and test. If you want to change the N constant, set the
-appropriate option for the `cube` target's compilation.

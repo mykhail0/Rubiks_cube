@@ -3,20 +3,22 @@ CFLAGS = -std=c11 -pedantic -Wall -Wextra -Werror -fstack-protector-strong -g
 
 .PHONY: all clean test
 
-all: bin/cube
+BUILDDIR = build
+TEST_EXE = $(BUILDDIR)/test_executable
 
-bin/cube: cube.c bin
+all: $(BUILDDIR)/cube
+
+$(BUILDDIR)/cube: cube.c
+	mkdir -p $(BUILDDIR)
 	$(CC) -DN=5 $(CFLAGS) $< -o $@
 
-bin/test_executable: cube.c bin
+$(TEST_EXE): cube.c
+	mkdir -p $(BUILDDIR)
 	$(CC) -DN=23 $(CFLAGS) $< -o $@
 
-bin:
-	mkdir -p bin
-
 clean:
-	if [ -d "bin" ]; then rm bin/*; fi
+	if [ -f $(TEST_EXE) ]; then rm $(TEST_EXE); fi
 	find tests -name "*.t" -delete
 
-test: bin/test_executable test.sh tests
+test: $(TEST_EXE) test.sh tests
 	./test.sh
