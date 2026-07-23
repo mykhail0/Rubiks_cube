@@ -11,6 +11,10 @@ Program works in terminal, it creates a `NxNxN` Rubik's cube in an arranged
 state and follows user given instructions on turning the cube's layers, showing
 the cube's state if prompted.
 
+## Demo
+
+![demo](assets/demo.gif)
+
 ## Requirements
 
 Project works for a Linux system with a working gcc compiler, to run tests you
