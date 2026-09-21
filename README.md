@@ -2,7 +2,8 @@
 
 A program for terminal which lets a user play with a `NxNxN` Rubik's cube. This
 was an assignment in the course on imperative programming at the University of
-Warsaw.
+Warsaw. Specification, requirements and tests were provided as part of the
+assignment.
 
 ## Introduction
 
